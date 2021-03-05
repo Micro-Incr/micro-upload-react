@@ -1,0 +1,13 @@
+.drag-and-drop{
+  background: #F6F8FB;
+  border: 1px dashed #97BEF4;
+  //background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2397BEF4FF' stroke-width='3' stroke-dasharray='10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 24rem;
+  height: 14rem;
+  transition: border 0.6s ease-out;
+  .drag-and-drop-image{
+    margin-top: 2rem;
+  }
+}
