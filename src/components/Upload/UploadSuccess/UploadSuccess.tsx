@@ -11,7 +11,7 @@ function UploadSuccess() {
         src={'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'}
         alt={'dummy'} />
       <div className={'flex items-center clipboard-wrapper'}>
-        <p>https://helpx.adobe.com/content/dam/help/en/photoshop...</p>
+        <p>https://helpx.adobe.com/content/dam/hel...</p>
         <button className={'btn btn-primary'}>Copy Link</button>
       </div>
     </div>
