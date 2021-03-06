@@ -1,6 +1,6 @@
-import React from 'react'
-import CheckCircle from '../../svgs/CheckCircle'
-import './UploadSuccess.scss'
+import React from 'react';
+import CheckCircle from '../../svgs/CheckCircle';
+import './UploadSuccess.scss';
 function UploadSuccess() {
   return (
     <div className={'upload-success'}>
@@ -15,7 +15,7 @@ function UploadSuccess() {
         <button className={'btn btn-primary'}>Copy Link</button>
       </div>
     </div>
-  )
+  );
 }
 
-export default UploadSuccess
+export default UploadSuccess;

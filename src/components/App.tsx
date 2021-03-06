@@ -1,6 +1,6 @@
-import React from 'react'
-import './App.scss'
-import Router from './Router'
+import React from 'react';
+import './App.scss';
+import Router from './Router';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Router />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

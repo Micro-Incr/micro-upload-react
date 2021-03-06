@@ -1,5 +1,5 @@
-import React from 'react'
-import ProgressBar from './ProgressBar/ProgressBar'
+import React from 'react';
+import ProgressBar from './ProgressBar/ProgressBar';
 
 const Uploading = () => {
   return (
@@ -10,7 +10,7 @@ const Uploading = () => {
       <ProgressBar />
     </>
 
-  )
-}
+  );
+};
 
-export default Uploading
+export default Uploading;

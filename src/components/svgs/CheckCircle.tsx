@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export interface ISVGProps {
   size: number
@@ -47,7 +47,7 @@ const CheckCircle = (props: ISVGProps) => {
       <g>
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default CheckCircle
+export default CheckCircle;

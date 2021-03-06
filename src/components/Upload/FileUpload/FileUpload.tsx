@@ -1,21 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react'
-import './FileUpload.scss'
+import React, { useRef } from 'react';
+import './FileUpload.scss';
+import useFile from '../../../hooks/useFile';
 
 const FileUpload = () => {
-  const fileInputField = useRef(null)
-  const [files, setFiles] = useState<FileList[]>([])
-
-  useEffect(() => {
-    if (files.length === 0) {
-    } else {
-      console.log(files)
-      //TODO UploadHome to server
-    }
-  }, [files])
+  const fileInputField = useRef(null);
+  const { setFiles } = useFile();
 
   const onFileUpload = (e: any) => {
-    setFiles(e.target.files)
-  }
+    setFiles(e.target.files);
+  };
 
   return (
     <div className={'file-upload'}>
@@ -28,7 +21,7 @@ const FileUpload = () => {
       <label htmlFor='actual-btn'>Choose File</label>
     </div>
 
-  )
-}
+  );
+};
 
-export default FileUpload
+export default FileUpload;

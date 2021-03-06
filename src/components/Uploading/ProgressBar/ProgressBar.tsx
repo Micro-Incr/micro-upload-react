@@ -1,5 +1,5 @@
-import React from 'react'
-import './ProgressBar.scss'
+import React from 'react';
+import './ProgressBar.scss';
 
 const ProgressBar = () => {
   return (
@@ -10,7 +10,7 @@ const ProgressBar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProgressBar
+export default ProgressBar;
