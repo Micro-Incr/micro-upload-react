@@ -24,9 +24,11 @@ const Router = ({ uploadState }: { uploadState: uploadStateType }) => {
         const formData = new FormData();
         formData.append('image', files[0]);
         return await axios.post('/images', formData, {
+          /*
           headers: {
             'content-type': 'multipart/form-data'
           },
+           */
           onUploadProgress: function(progressEvent) {
             const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
             setPercent(percentCompleted);
@@ -38,7 +40,7 @@ const Router = ({ uploadState }: { uploadState: uploadStateType }) => {
       if (response?.status === 201) {
         setFiles([]);
         if (response.data.uploadServer === 'server') {
-          setUploadedImage(`${SERVER_URL}/${MODE === 'production' ? 'production' : 'dev'}/${response.data.image}`);
+          setUploadedImage(`${SERVER_URL}/${MODE === 'production' ? 'production' : 'development'}/${response.data.image}`);
         }
         isLoading(false);
       }
