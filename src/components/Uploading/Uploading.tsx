@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from './ProgressBar/ProgressBar';
+// import ProgressBar from './ProgressBar/ProgressBar';
 
 const Uploading = () => {
   return (
@@ -7,7 +7,7 @@ const Uploading = () => {
       <p>
         Uploading...
       </p>
-      <ProgressBar />
+      {/* <ProgressBar /> */}
     </>
 
   );
