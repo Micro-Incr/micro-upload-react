@@ -1,9 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './DragAndDrop.scss';
-import useFile from '../../../hooks/useFile';
+import { RootState } from '../../../reducers';
+import { ThunkDispatch } from 'redux-thunk';
+import { uploadFile } from '../../../actions/uploadActions';
+import { connect } from 'react-redux';
 
 interface IDragAndDropProps {
   imgSrc: string
+  uploadFile: any
+  setFiles: (files: Blob[]) => void
+  isLoading: (loading: boolean) => void
 }
 
 /**
@@ -11,10 +17,11 @@ interface IDragAndDropProps {
  * @param props
  * @constructor
  */
-const DragAndDrop = (props: IDragAndDropProps) => {
+const DragAndDrop = ({ uploadFile, imgSrc, setFiles, isLoading }: IDragAndDropProps) => {
 
 
   const [isDragZoneAvailable, setDragZoneAvailable] = useState<boolean>(true);
+  const [tempFiles, setTempFiles] = useState<Blob[]>();
 
   const style = {
     border: isDragZoneAvailable ? '1px dashed #97BEF4' : '1px dashed purple'
@@ -22,8 +29,14 @@ const DragAndDrop = (props: IDragAndDropProps) => {
 
   const dragAndDropRef = useRef<HTMLDivElement>(null);
 
-  const { setFiles } = useFile();
+  useEffect(() => {
+    if(tempFiles){
+      console.log('hello');
+      setFiles(tempFiles);
+    }
+  }, [tempFiles, setFiles]);
 
+  //const { setFiles } = useFile(props.uploadFile);
 
   const handleDrag = (e: any) => {
     e.preventDefault();
@@ -66,9 +79,9 @@ const DragAndDrop = (props: IDragAndDropProps) => {
         //console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name)
       }
     }
-    setFiles(temp_files);
-
-  }, [setFiles]);
+    setTempFiles(temp_files);
+    isLoading(true);
+  }, [setTempFiles, isLoading]);
 
 
   useEffect(() => {
@@ -89,10 +102,22 @@ const DragAndDrop = (props: IDragAndDropProps) => {
 
   return (
     <div className={'drag-and-drop'} ref={dragAndDropRef} style={style}>
-      <img className={'drag-and-drop-image'} src={props.imgSrc} alt={'Drag and Drop'} />
+      <img className={'drag-and-drop-image'} src={imgSrc} alt={'Drag and Drop'} />
       <p>Drag & Drop your image here</p>
     </div>
   );
 };
 
-export default DragAndDrop;
+const mapStateToProps = (state: RootState) => {
+  return {
+    uploadState: state.uploadState
+  };
+};
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {
+  return {
+    uploadFile: (formData: FormData) => dispatch(uploadFile(formData))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DragAndDrop);

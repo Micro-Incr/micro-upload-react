@@ -1,18 +1,31 @@
 import React from 'react';
 import CheckCircle from '../../svgs/CheckCircle';
 import './UploadSuccess.scss';
-function UploadSuccess() {
+
+interface IUploadSuccess {
+  uploadedImage: string
+}
+
+function UploadSuccess({ uploadedImage }: IUploadSuccess) {
+
+  const urlFormattedForImageUploaded = (): string => {
+    return `${uploadedImage.slice(0, 40)}...`;
+  };
+
   return (
     <div className={'upload-success'}>
       <CheckCircle size={1.5} fill={'#219653'} />
       <h1 className={'upload-success'}>Upload Successfully!</h1>
       <img
         className={'uploaded-image'}
-        src={'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'}
+        src={uploadedImage}
         alt={'dummy'} />
-      <div className={'flex items-center clipboard-wrapper'}>
-        <p>https://helpx.adobe.com/content/dam/hel...</p>
-        <button className={'btn btn-primary'}>Copy Link</button>
+      <div className={'flex items-center clipboard-wrapper justify-space-between'}>
+        <p>{urlFormattedForImageUploaded()}</p>
+        <button className={'btn btn-primary'} onClick={async () => {
+          await navigator.clipboard.writeText(uploadedImage);
+        }}>Copy Link
+        </button>
       </div>
     </div>
   );

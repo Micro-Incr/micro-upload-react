@@ -1,15 +1,29 @@
 import React, { useRef } from 'react';
 import './FileUpload.scss';
-import useFile from '../../../hooks/useFile';
+import { RootState } from '../../../reducers';
+import { ThunkDispatch } from 'redux-thunk';
+import { uploadFile } from '../../../actions/uploadActions';
+import { connect } from 'react-redux';
 
-const FileUpload = (props: any) => {
+interface IFileUpload {
+  setFiles: (files: Blob[]) => void
+  isLoading: (loading: boolean) => void
+}
+
+const FileUpload = (
+  {
+    setFiles,
+    isLoading
+  }: IFileUpload
+) => {
   const fileInputField = useRef(null);
-  const { setFiles } = useFile();
+  //const { setFiles } = useFile(uploadFile);
 
   const onFileUpload = (e: any) => {
     setFiles(e.target.files);
-    props.setUploading(true);
+    isLoading(true);
   };
+
   return (
     <div className={'file-upload'}>
       <input type='file' id='actual-btn'
@@ -24,4 +38,16 @@ const FileUpload = (props: any) => {
   );
 };
 
-export default FileUpload;
+const mapStateToProps = (state: RootState) => {
+  return {
+    uploadState: state.uploadState
+  };
+};
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {
+  return {
+    uploadFile: (formData: FormData) => dispatch(uploadFile(formData))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FileUpload);

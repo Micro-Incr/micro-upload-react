@@ -1,20 +1,18 @@
-import {
-  UPLOAD_IDLE,
-  UPLOAD_IN_PROGRESS,
-  UPLOAD_SUCCESS
-} from '../actions/types';
+import { UPLOAD_IDLE, UPLOAD_IN_PROGRESS, UPLOAD_SUCCESS } from '../actions/types';
 import { UploadState } from '../models/UploadState';
 
 export interface uploadStateType {
   state: UploadState,
   loading: boolean,
-  error: any
+  error: any,
+  percentCompleted: number
 }
 
 const initialState: uploadStateType = {
   state: UploadState.IDLE,
   loading: false,
-  error: null
+  error: null,
+  percentCompleted: 0
 };
 
 interface UploadIDLE {
@@ -24,7 +22,9 @@ interface UploadIDLE {
 
 interface UploadInProgress {
   type: typeof UPLOAD_IN_PROGRESS,
-  payload: any
+  payload: {
+    percentCompleted: number
+  }
 }
 interface UploadSuccess {
   type: typeof UPLOAD_SUCCESS,
@@ -50,7 +50,8 @@ export const uploadStateReducer = (state = initialState, action: UploadImageActi
   case UPLOAD_SUCCESS:
     return {
       ...state,
-      loading: false
+      loading: false,
+      state: UploadState.SUCCESS
     };
   default:
     return state;
