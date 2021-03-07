@@ -7,7 +7,6 @@ import { RootState } from '../reducers';
 import { ThunkDispatch } from 'redux-thunk';
 import UploadSuccess from './Upload/UploadSuccess/UploadSuccess';
 import axios, { MODE, SERVER_URL } from '../api/server';
-import { useAnimation } from 'framer-motion';
 import { CSSTransition } from 'react-transition-group';
 
 
@@ -17,7 +16,6 @@ const Router = () => {
   const [percent, setPercent] = useState<number>(0);
   const [loading, isLoading] = useState<boolean>(false);
   const [uploadedImage, setUploadedImage] = useState<string>('');
-  const controls = useAnimation();
 
   useEffect(() => {
     const uploadFile = async () => {
@@ -43,8 +41,8 @@ const Router = () => {
         }
       }
     });
-  }, [files, controls]);
-
+  }, [files]);
+  /*
   const render = () => {
     if (uploadedImage && !loading) {
       return (
@@ -66,6 +64,7 @@ const Router = () => {
       </div>
     );
   };
+  */
 
   return (
     <div className={'upload-wrapper'}>
