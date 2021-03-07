@@ -1,15 +1,15 @@
-import React from 'react'
-import './App.scss'
-import UploadSuccess from './Upload/UploadSuccess/UploadSuccess'
+import React from 'react';
+import './App.scss';
+import Router from './Router';
 
 function App() {
   return (
     <div className={'upload-wrapper'}>
       <div className={'upload'}>
-        <UploadSuccess />
+        <Router />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

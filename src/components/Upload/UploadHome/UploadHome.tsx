@@ -1,7 +1,7 @@
-import React from 'react'
-import FileUpload from '../FileUpload/FileUpload'
-import DragAndDrop from '../DragAndDrop/DragAndDrop'
-import DragAndDropImg from '../assets/image.svg'
+import React from 'react';
+import FileUpload from '../FileUpload/FileUpload';
+import DragAndDrop from '../DragAndDrop/DragAndDrop';
+import DragAndDropImg from '../../../assets/image.svg';
 
 function UploadHome() {
   return (
@@ -12,7 +12,7 @@ function UploadHome() {
       <p>Or</p>
       <FileUpload />
     </>
-  )
+  );
 }
 
-export default UploadHome
+export default UploadHome;
