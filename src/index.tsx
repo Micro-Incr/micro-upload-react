@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import 'typeface-dosis';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import './styles/scss/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
