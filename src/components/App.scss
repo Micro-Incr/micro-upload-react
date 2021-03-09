@@ -23,6 +23,16 @@ label {
   cursor: pointer;
   margin-top: 1rem;
   padding: 1rem 3rem;
+  transition: 150ms;
+
+  &:hover {
+    background-color: darken(#2F80ED, 10%);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 .2rem rgba(#2F80ED, .4);
+  }
 }
 
 h1 {
