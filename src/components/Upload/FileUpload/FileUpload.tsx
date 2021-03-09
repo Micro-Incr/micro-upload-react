@@ -26,13 +26,13 @@ const FileUpload = (
 
   return (
     <div className={'file-upload'}>
-      <input type='file' className='btn-file'
+      <input type='file' id='btn-file'
         hidden
         ref={fileInputField}
         onChange={onFileUpload}
         multiple={true}
       />
-      <label htmlFor='actual-btn' className={'btn-file-label'}>Choose File</label>
+      <label htmlFor='btn-file' className={'btn-file-label'}>Choose File</label>
     </div>
 
   );
