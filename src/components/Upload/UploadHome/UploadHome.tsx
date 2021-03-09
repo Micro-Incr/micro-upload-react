@@ -1,7 +1,7 @@
 import React from 'react';
 import FileUpload from '../FileUpload/FileUpload';
 import DragAndDrop from '../DragAndDrop/DragAndDrop';
-import DragAndDropImg from '../../../assets/image.svg';
+import DragAndDropImg from '../../../assets/images/image.svg';
 
 function UploadHome({ setFiles, isLoading }: { setFiles: (files: Blob[]) => void, isLoading: (loading: boolean) => void }) {
   return (

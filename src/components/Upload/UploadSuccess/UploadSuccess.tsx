@@ -21,7 +21,7 @@ function UploadSuccess({ uploadedImage }: IUploadSuccess) {
         src={uploadedImage}
         alt={'dummy'} />
       <div className={'flex items-center clipboard-wrapper justify-space-between'}>
-        <p>{urlFormattedForImageUploaded()}</p>
+        <p className={'clipboard-text'}>{urlFormattedForImageUploaded()}</p>
         <button className={'btn btn-primary'} onClick={async () => {
           await navigator.clipboard.writeText(uploadedImage);
         }}>Copy Link
