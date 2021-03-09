@@ -22,8 +22,10 @@ const Router = () => {
       if (files.length === 0) {
       } else {
         const formData = new FormData();
-        formData.append('image', files[0]);
-
+        //formData.append('image', files);
+        for (let i = 0; i < files.length; i++) {
+          formData.append('image', files[i]);
+        }
         return await axios.post('/images', formData, {
           onUploadProgress: async function(progressEvent) {
             const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -68,17 +70,19 @@ const Router = () => {
 
   return (
     <div className={'upload-wrapper'}>
-      <CSSTransition in={percent === 0} timeout={2000} classNames='my-node' unmountOnExit>
-        <div className={'upload'}>
-          <UploadHome setFiles={setFiles} isLoading={isLoading} />
-        </div>
-      </CSSTransition>
-      <CSSTransition in={percent > 0 && percent < 100 && loading} timeout={2000} classNames='my-node' unmountOnExit>
+      {
+        percent === 0 && !loading && !uploadedImage && (
+          <div className={'upload'}>
+            <UploadHome setFiles={setFiles} isLoading={isLoading} />
+          </div>
+        )
+      }
+      <CSSTransition in={loading} timeout={500} classNames='my-node' unmountOnExit>
         <div className={'upload-loading'}>
           <ProgressBar percent={percent} />
         </div>
       </CSSTransition>
-      <CSSTransition in={percent === 100 && uploadedImage !== ''} timeout={2000} classNames='my-node' unmountOnExit>
+      <CSSTransition in={percent === 100 && uploadedImage !== ''} timeout={500} classNames='my-node' unmountOnExit>
         <div className={'upload'}>
           <UploadSuccess uploadedImage={uploadedImage} />
         </div>

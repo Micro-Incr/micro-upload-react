@@ -98,20 +98,47 @@ h1 {
 
 .my-node-enter {
   opacity: 0;
+  position: absolute;
 }
 
 .my-node-enter-active {
   opacity: 1;
-  transition: opacity 2000ms;
-  position: relative;
+  transition: opacity 300ms;
+  position: absolute;
 }
 
 .my-node-exit {
   opacity: 1;
+  position: absolute;
 }
 
 .my-node-exit-active {
   opacity: 0;
-  transition: opacity 2000ms;
+  transition: opacity 300ms;
+}
+
+.upload-home-anim-enter {
+  opacity: 0;
   position: absolute;
+  display: none;
+}
+
+.upload-home-anim-enter-active {
+  opacity: 1;
+  transition: opacity 100ms;
+  position: absolute;
+  display: none;
+}
+
+.upload-home-anim-exit {
+  opacity: 1;
+  position: absolute;
+  display: none;
+}
+
+.upload-home-anim-exit-active {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 100ms;
+  display: none;
 }
