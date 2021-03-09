@@ -1,3 +1,24 @@
-.file-upload{
+@import "src/assets/styles/scss/abstract/variable";
+
+.file-upload {
   margin-top: 1rem;
+}
+
+.btn-file-label {
+  background-color: $primaryColor;
+  color: white;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  transition: all 0.6s ease-out;
+
+  &:hover {
+    background-color: darken($primaryColor, 10%);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 .2rem rgba($primaryColor, .4);
+  }
 }

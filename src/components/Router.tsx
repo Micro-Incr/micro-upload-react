@@ -22,7 +22,6 @@ const Router = () => {
       if (files.length === 0) {
       } else {
         const formData = new FormData();
-        //formData.append('image', files);
         for (let i = 0; i < files.length; i++) {
           formData.append('image', files[i]);
         }
@@ -44,29 +43,6 @@ const Router = () => {
       }
     });
   }, [files]);
-  /*
-  const render = () => {
-    if (uploadedImage && !loading) {
-      return (
-        <div className={'upload'}>
-          <UploadSuccess uploadedImage={uploadedImage} />
-        </div>
-      );
-    }
-    if (loading) {
-      return (
-        <div className={'upload-loading'}>
-          <ProgressBar percent={percent} />
-        </div>
-      );
-    }
-    return (
-      <div className={'upload'}>
-        <UploadHome setFiles={setFiles} isLoading={isLoading} />
-      </div>
-    );
-  };
-  */
 
   return (
     <div className={'upload-wrapper'}>
